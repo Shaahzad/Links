@@ -13,7 +13,7 @@ const [alltodo, setalltodo] = useState([])
 const [todoedit, settodoedit] = useState({})
 const AddHandler = async ()=>{
   try {
-    const response = await axios.post("http://localhost:5000/api/addtodo",{task: todoval})
+    const response = await axios.post("https://mern-crud-backend-umber.vercel.app/api/addtodo",{task: todoval})
     if(todoval === ""){
       toast.error(response.data.message)
       return
@@ -31,7 +31,7 @@ const AddHandler = async ()=>{
 useEffect(() => {
   const getalltodo = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/gettodo")
+      const response = await axios.get("https://mern-crud-backend-umber.vercel.app/api/gettodo")
       setalltodo(response.data.todo)
     } catch (error) {
       console.log(error)
@@ -44,7 +44,7 @@ useEffect(() => {
 // delete todo
 const HandelDelete = async (id) => {
   try {
-       const res = await axios.delete(`http://localhost:5000/api/deletetodo/${id}`)
+       const res = await axios.delete(`https://mern-crud-backend-umber.vercel.app/api/deletetodo/${id}`)
        console.log(res.data)
        toast.success(res.data.message)
   } catch (error) {
@@ -62,7 +62,7 @@ const HandelDelete = async (id) => {
 
   const HandelUpdate = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/updatetodo/${id}`,{task: todoval})
+      const response = await axios.put(`https://mern-crud-backend-umber.vercel.app/api/updatetodo/${id}`,{task: todoval})
        
       toast.success(response.data.message)
       settodoval("")
