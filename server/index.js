@@ -8,9 +8,6 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("server is running");
-})
 
 app.use(cors({
     origin: "https://mern-crud-front-sigma.vercel.app",
@@ -18,6 +15,9 @@ app.use(cors({
 }));
 
 
+app.get("/", (req, res) => {
+    res.send("server is running");
+})
 app.use("/api", router)
 
 
