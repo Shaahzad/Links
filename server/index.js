@@ -6,8 +6,12 @@ import router from "./Routes/index.js";
 
 dotenv.config();
 const app = express();
-
 app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("server is running");
+})
+
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
