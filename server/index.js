@@ -10,13 +10,15 @@ mongoose.connect(process.env.mongo)
     .then(() => {
         console.log("connected to db");
     })
+const app = express();
+app.use(express.json());
+
+
 app.use(cors({
     origin: "https://mern-crud-front-sigma.vercel.app",
     credentials: true
 }));
 
-const app = express();
-app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("server is running");
