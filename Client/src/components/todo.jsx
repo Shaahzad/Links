@@ -25,13 +25,11 @@ const Todo = () => {
     }, []);
 
     const AddHandler = async () => {
-        if (todoval.trim() === "") {
-            toast.error("Task can't be empty");
-            return;
-        }
-
         try {
             const response = await axios.post("https://mern-crud-backend-umber.vercel.app/api/addtodo", { task: todoval });
+            if(todoval === ""){
+              toast.error(response.data.message)
+            }
             toast.success(response.data.message);
             settodoval("");
             fetchTodos(); // Refresh todos after adding
@@ -58,11 +56,6 @@ const Todo = () => {
     };
 
     const HandelUpdate = async (id) => {
-        if (todoval.trim() === "") {
-            toast.error("Task can't be empty");
-            return;
-        }
-
         try {
             const response = await axios.put(`https://mern-crud-backend-umber.vercel.app/api/updatetodo/${id}`, { task: todoval });
             toast.success(response.data.message);
